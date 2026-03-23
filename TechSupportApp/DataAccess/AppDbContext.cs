@@ -25,6 +25,7 @@ namespace TechSupportApp.DataAccess
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
+            modelBuilder.Entity<User>()
                 .HasRequired(u => u.Role)
                 .WithMany(r => r.Users)
                 .HasForeignKey(u => u.RoleId);
