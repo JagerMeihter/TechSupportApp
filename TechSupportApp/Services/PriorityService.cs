@@ -8,5 +8,9 @@ namespace TechSupportApp.Services
 {
     internal class PriorityService
     {
+        internal void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

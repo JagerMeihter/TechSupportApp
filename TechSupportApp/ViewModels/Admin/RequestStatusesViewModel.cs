@@ -3,6 +3,7 @@ using System.Windows;
 using TechSupportApp.Models;
 using TechSupportApp.Services;
 using TechSupportApp.Helpers;
+using System.Data.Entity; // важно для Include с лямбдой
 
 namespace TechSupportApp.ViewModels.Admin
 {
