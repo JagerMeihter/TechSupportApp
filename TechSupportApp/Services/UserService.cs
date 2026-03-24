@@ -4,7 +4,6 @@ using TechSupportApp.DataAccess;
 using TechSupportApp.Models;
 using TechSupportApp.Helpers;
 
-
 namespace TechSupportApp.Services
 {
     public class UserService
@@ -38,8 +37,12 @@ namespace TechSupportApp.Services
                     existing.FullName = user.FullName;
                     existing.Phone = user.Phone;
                     existing.RoleId = user.RoleId;
+
                     if (!string.IsNullOrEmpty(newPassword))
+                    {
                         existing.PasswordHash = PasswordHelper.HashPassword(newPassword);
+                    }
+
                     context.SaveChanges();
                 }
             }
