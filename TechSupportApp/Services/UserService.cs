@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity; // важно для Include с лямбдой
 using System.Linq;
 using TechSupportApp.DataAccess;
 using TechSupportApp.Models;
@@ -12,6 +13,7 @@ namespace TechSupportApp.Services
         {
             using (var context = new AppDbContext())
             {
+                // Теперь Include с лямбдой работает благодаря using System.Data.Entity
                 return context.Users.Include(u => u.Role).ToList();
             }
         }
@@ -20,7 +22,7 @@ namespace TechSupportApp.Services
         {
             using (var context = new AppDbContext())
             {
-                user.PasswordHash = PasswordHelper.HashPassword(plainPassword);
+                user.PasswordHash = PasswordHelper.HashPassword(plainPassword); // передаём строку, а не лямбду
                 context.Users.Add(user);
                 context.SaveChanges();
             }
@@ -40,7 +42,7 @@ namespace TechSupportApp.Services
 
                     if (!string.IsNullOrEmpty(newPassword))
                     {
-                        existing.PasswordHash = PasswordHelper.HashPassword(newPassword);
+                        existing.PasswordHash = PasswordHelper.HashPassword(newPassword); // передаём строку
                     }
 
                     context.SaveChanges();
