@@ -1,28 +1,41 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using TechSupportApp.Views.Admin;
+using TechSupportApp.Views;
 
 namespace TechSupportApp.Views
 {
-    /// <summary>
-    /// Логика взаимодействия для AdminView.xaml
-    /// </summary>
-    public partial class AdminView : Page
+    public partial class AdminView : UserControl
     {
         public AdminView()
         {
             InitializeComponent();
+        }
+
+        private void OpenUsersWindow(object sender, RoutedEventArgs e)
+        {
+            new UsersWindow().ShowDialog();
+        }
+
+        private void OpenEquipmentTypesWindow(object sender, RoutedEventArgs e)
+        {
+            new EquipmentTypesWindow().ShowDialog();
+        }
+
+        private void OpenStatusesWindow(object sender, RoutedEventArgs e)
+        {
+            new RequestStatusesWindow().ShowDialog();
+        }
+
+        private void OpenPrioritiesWindow(object sender, RoutedEventArgs e)
+        {
+            new PrioritiesWindow().ShowDialog();
+        }
+
+        private void OpenRequestsView(object sender, RoutedEventArgs e)
+        {
+            var requestsWindow = new Window { Title = "Все заявки", Content = new ManagerRequestsView(), Width = 800, Height = 600 };
+            requestsWindow.ShowDialog();
         }
     }
 }

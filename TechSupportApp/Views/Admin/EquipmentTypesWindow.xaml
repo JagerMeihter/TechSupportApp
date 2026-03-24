@@ -1,14 +1,27 @@
-﻿<Page x:Class="TechSupportApp.Views.Admin.EquipmentTypesWindow"
-      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:TechSupportApp.Views.Admin"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="EquipmentTypesWindow">
-
-    <Grid>
-        
+﻿<Window x:Class="TechSupportApp.Views.Admin.EquipmentTypesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Типы техники" Height="300" Width="400" WindowStartupLocation="CenterOwner">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="5">
+            <TextBox Text="{Binding NewName}" Width="200" Margin="5"/>
+            <Button Content="Добавить" Command="{Binding AddCommand}" Margin="5"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" ItemsSource="{Binding EquipmentTypes}" AutoGenerateColumns="False"
+                  SelectedItem="{Binding SelectedType}" Margin="5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="Auto"/>
+                <DataGridTextColumn Header="Название" Binding="{Binding Name}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="5">
+            <Button Content="Редактировать" Command="{Binding EditCommand}" Margin="5"/>
+            <Button Content="Удалить" Command="{Binding DeleteCommand}" Margin="5"/>
+        </StackPanel>
     </Grid>
-</Page>
+</Window>
